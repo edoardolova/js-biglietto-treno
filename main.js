@@ -1,0 +1,32 @@
+// Il programma dovrà chiedere all'utente il numero di chilometri che vuole percorrere e l'età del passeggero.
+// Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio, secondo queste regole:
+// il prezzo del biglietto è definito in base ai km (0.21 € al km)
+// va applicato uno sconto del 20% per i minorenni
+// va applicato uno sconto del 40% per gli over 65.
+// L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
+// TIP: per controllare che la vostra logica sui prezzi funzioni correttamente, provate a verificare quanto segue:
+// 100km, 10 anni => prezzo corretto: €16.80
+// 100km, 70 anni => prezzo corretto: €12.60
+
+let distanceKm = Number(prompt("inserisci il numero in km che desideri percorrere"));
+let age = Number(prompt("inserisci la tua età"));
+
+const underageDiscount = 0.2;
+const overDiscount = 0.4;
+const ticketCostKm = 0.21;
+
+let basePrice = distanceKm * ticketCostKm;
+let discount = 0;
+let price;
+
+// underage case 
+if (age < 18) {
+    discount = basePrice * underageDiscount;
+}
+// over case 
+else if (age > 65) {
+    discount = basePrice * overDiscount;
+}
+//calculate price with discount
+price= basePrice - discount;
+console.log(`prezzo: ${price.toFixed(2)}€`);
